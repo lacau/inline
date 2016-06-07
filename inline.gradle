@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id 'maven'
+}
+
+group 'br.com.uol.inline'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+
+    maven {
+        url "http://repo1.maven.org/maven2"
+    }
+
+    dependencies {
+        compile "org.springframework:spring-context:4.2.6.RELEASE"
+        compile "commons-chain:commons-chain:1.2"
+        compile "org.reflections:reflections:0.9.10"
+
+        testCompile group: 'junit', name: 'junit', version: '4.11'
+    }
+}
