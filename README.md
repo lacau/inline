@@ -39,3 +39,24 @@ public class Command1 extends AbstractCommand<Context1> {
     }
 }
 ```
+#### *Chain start*
+* Autowired **ChainLocator** from **br.com.uol.inline** package into your spring component.
+* Use ChainLocator to get your chain by the **qualifier** attribute defined on **@Chain** annotation.
+```java
+@Service
+public class ChainService {
+
+    @Autowired
+    private ChainLocator chainLocator;
+    
+    public final void startChain() {
+        final Context1 context = new Context1();
+        final ChainBase chain = chainLocator.getChain("chain1");
+        try {
+            chain.execute(context);
+        } catch(Exception e /*Any exceptions that your commands may throw*/) {
+        
+        }
+    }
+}
+```
