@@ -16,6 +16,14 @@ You just need to add **"br.com.inline"** package to your **spring** package scan
 public final class Chain1 {
 }
 ```
+#### *Context definition*
+* Define context used across chain commands.
+* **Should** extends **ContextBase** from **org.apache.commons.chain.impl** package.
+```java
+public class Context1 extends ContextBase {
+    // Declare any attributes you need across commands
+}
+```
 #### *Commands definition*
 * Define chain's commands.
 * Should be annotated with **@Command** from **br.com.uol.inline.annotation** package.
