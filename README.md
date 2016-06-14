@@ -7,7 +7,7 @@ You just need to add **"br.com.inline"** package to your **spring** package scan
 ## Code example
 #### *Chain definition*
 * Define the chain and its commands.
-* **Should** be annotated it with **@Chain** from **br.com.uol.inline.annotation** package passing its command classes into **commands** parameter.
+* **Should** be annotated it with **@Chain** from **br.com.inline.annotation** package passing its command classes into **commands** parameter.
 ```java
 @Chain(qualifier = "chain1", commands = {
         Command1.class,
@@ -26,8 +26,8 @@ public class Context1 extends ContextBase {
 ```
 #### *Commands definition*
 * Define chain's commands.
-* Should be annotated with **@Command** from **br.com.uol.inline.annotation** package.
-* Should extends **AbstractCommand** from **br.com.uol.inline.command** package passing a class that extends ContextBase.
+* Should be annotated with **@Command** from **br.com.inline.annotation** package.
+* Should extends **AbstractCommand** from **br.com.inline.command** package passing a class that extends ContextBase.
 * Return **true** from execute method if you want to **interrupt** the flow, **false** to proceed.
 ```java
 @Command
@@ -40,7 +40,7 @@ public class Command1 extends AbstractCommand<Context1> {
 }
 ```
 #### *Chain start*
-* Autowired **ChainLocator** from **br.com.uol.inline** package into your spring component.
+* Autowired **ChainLocator** from **br.com.inline** package into your spring component.
 * Use ChainLocator to get your chain by the **qualifier** attribute defined on **@Chain** annotation.
 ```java
 @Service
