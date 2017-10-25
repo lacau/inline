@@ -3,10 +3,10 @@ plugins {
     id 'maven'
 }
 
-group 'br.com.uol.inline'
+group 'br.com.inline'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 repositories {
     mavenLocal()
@@ -21,5 +21,37 @@ repositories {
         compile "org.reflections:reflections:0.9.10"
 
         testCompile group: 'junit', name: 'junit', version: '4.11'
+    }
+}
+
+configurations {
+    deployerJars
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            configuration = configurations.deployerJars
+
+            repository(url: "http://nexus.redspark.io/content/repositories/releases") {
+                authentication(
+                        userName: "deployment",
+                        password: "deployment"
+                )
+            }
+
+            snapshotRepository(url: "http://nexus.redspark.io/content/repositories/snapshots") {
+                authentication(
+                        userName: "deployment",
+                        password: "deployment",
+                )
+            }
+
+            pom {
+                groupId = project.group
+                artifactId = rootProject.name
+                version = project.version
+            }
+        }
     }
 }
